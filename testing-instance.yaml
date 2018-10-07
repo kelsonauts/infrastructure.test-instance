@@ -1,0 +1,48 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: >
+  Stack used to deploy EC2 for testing purposes
+
+Parameters:
+  AmiId:
+    Type: String
+    Description: Ami id to use
+
+  TypeOfInstance:
+    Type: String
+    Description: Type of instance
+    Default: t2.micro
+
+  KeyPair:
+    Type: String
+    Description: Key pair to access instance via ssh
+    Default: kp-useast1
+
+Resources:
+  NetworkInterface:
+    Type: "AWS::EC2::NetworkInterface"
+    Properties:
+      Description: Access to Jenkins Master host
+      GroupSet: 
+        - !ImportValue JenkinsSG
+      SubnetId: !ImportValue VpcASubnetA
+
+
+  EC2:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      # IamInstanceProfile: arn:aws:iam::054305859799:role/Visitor
+      ImageId: !Ref AmiId
+      InstanceType: !Ref TypeOfInstance
+      KeyName: !Ref KeyPair
+      NetworkInterfaces:
+        - DeviceIndex: 0
+          NetworkInterfaceId: !Ref NetworkInterface
+
+  AssociateEIP:
+    Type: "AWS::EC2::EIPAssociation"
+    Properties:
+      EIP: !ImportValue "EIPVpcA"
+      InstanceId: !Ref EC2
+      NetworkInterfaceId: !Ref NetworkInterface
+
