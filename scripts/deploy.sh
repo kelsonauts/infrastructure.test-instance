@@ -1,6 +1,6 @@
 #!/bin/bash -xe
 
-STACK_NAME="TestingEC2"
+STACK_NAME="testing-ec2"
 TEMPLATE_NAME="testing-instance.yaml"
 
 if [[ `aws cloudformation describe-stacks | jq ".Stacks[] | select(.StackName == \"${STACK_NAME}\")"` ]]; then 
