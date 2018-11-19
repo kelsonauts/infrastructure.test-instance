@@ -25,7 +25,7 @@ Resources:
       Description: Access to Jenkins Master host
       GroupSet: 
         - !ImportValue JenkinsSG
-      SubnetId: !ImportValue VpcASubnetA
+      SubnetId: !ImportValue VpcASubnetB
 
 
   EC2:
@@ -39,10 +39,10 @@ Resources:
         - DeviceIndex: 0
           NetworkInterfaceId: !Ref NetworkInterface
 
-  AssociateEIP:
-    Type: "AWS::EC2::EIPAssociation"
-    Properties:
-      EIP: !ImportValue "EIPVpcA"
-      InstanceId: !Ref EC2
-      NetworkInterfaceId: !Ref NetworkInterface
+  # AssociateEIP:
+  #   Type: "AWS::EC2::EIPAssociation"
+  #   Properties:
+  #     EIP: !ImportValue "EIPVpcA"
+  #     InstanceId: !Ref EC2
+  #     NetworkInterfaceId: !Ref NetworkInterface
 
