@@ -16,7 +16,7 @@ Parameters:
   KeyPair:
     Type: String
     Description: Key pair to access instance via ssh
-    Default: kp-useast1
+    Default: aveselov-useast1
 
 Resources:
   NetworkInterface:
