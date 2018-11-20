@@ -1,10 +1,10 @@
 [
 	{
 		"ParameterKey": "AmiId",
-		"ParameterValue": "ami-0e6d2e8684d4ccb3e"
+		"ParameterValue": "ami-0aeb704d503081ea6"
 	},
 	{
 		"ParameterKey": "TypeOfInstance",
-		"ParameterValue": "t2.micro"
+		"ParameterValue": "g2.2xlarge"
 	}
 ]

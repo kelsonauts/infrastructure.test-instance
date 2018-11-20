@@ -38,6 +38,14 @@ Resources:
       NetworkInterfaces:
         - DeviceIndex: 0
           NetworkInterfaceId: !Ref NetworkInterface
+      UserData:
+        Fn::Base64:
+          Fn::Sub:
+            - |
+              #!/bin/bash -xe
+              
+              sudo apt install -y python2.7 g++-5 ocl-icd-* opencl-headers ibopenimageio-dev libglew-dev libglfw3-dev
+            - {}
 
   # AssociateEIP:
   #   Type: "AWS::EC2::EIPAssociation"
