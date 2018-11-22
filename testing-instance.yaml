@@ -7,11 +7,14 @@ Parameters:
   AmiId:
     Type: String
     Description: Ami id to use
+    # Default: ami-0484cefb8f48dafe8 # DeepLearning
+    Default: ami-009d6802948d06e52
 
   TypeOfInstance:
     Type: String
     Description: Type of instance
     Default: t2.micro
+    # Default: g2.2xlarge # Deeplearning
 
   KeyPair:
     Type: String
